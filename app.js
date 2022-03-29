@@ -56,7 +56,7 @@ const store = MongoDBStore.create({
   secret,
   touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: "squirrel",
+    secret: "thisshouldbeabettersecret",
   },
 });
 
