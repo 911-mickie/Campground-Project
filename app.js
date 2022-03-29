@@ -2,6 +2,25 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+// const express = require("express");
+// const path = require("path");
+// const mongoose = require("mongoose");
+// const ejsMate = require("ejs-mate");
+// const session = require("express-session");
+// const flash = require("connect-flash");
+// const ExpressError = require("./utils/ExpressError");
+// const methodOverride = require("method-override");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local");
+// const User = require("./models/user");
+// const helmet = require("helmet");
+// const MongoDBStore = require("connect-mongo");
+
+// const userRoutes = require("./routes/users");
+// const campgroundRoutes = require("./routes/campgrounds");
+// const reviewRoutes = require("./routes/reviews");
+// const mongoSanitize = require("express-mongo-sanitize");
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -14,12 +33,12 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const helmet = require("helmet");
-const MongoDBStore = require("connect-mongo");
-
+const mongoSanitize = require("express-mongo-sanitize");
 const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
-const mongoSanitize = require("express-mongo-sanitize");
+
+const MongoDBStore = require("connect-mongo");
 
 // const dbUrl = process.env.DB_URL;
 const dbUrl =
@@ -28,9 +47,6 @@ const dbUrl =
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
 });
-// mongoose.connect(dbUrl, {
-//   useNewUrlParser: true,
-// });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -55,9 +71,9 @@ const store = MongoDBStore.create({
   mongoUrl: dbUrl,
   secret,
   touchAfter: 24 * 60 * 60,
-  crypto: {
-    secret: "squirrel",
-  },
+  // crypto: {
+  //   secret: "squirrel",
+  // },
 });
 
 store.on("error", function (e) {
