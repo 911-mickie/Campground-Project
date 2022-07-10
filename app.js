@@ -23,8 +23,9 @@ const mongoSanitize = require("express-mongo-sanitize");
 
 // const dbUrl = process.env.DB_URL;
 const dbUrl =
-  process.env.DB_URL || "mongodb://localhost:27017/CampgroundProject";
-
+  process.env.DB_URL ||
+  "mongodb://localhost:27017/CampgroundProject";
+f
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
 });
@@ -56,7 +57,7 @@ const store = MongoDBStore.create({
   secret,
   touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: "thisshouldbeabettersecret",
+    secret: `${process.env.SECRET}` || "thisshouldbeabettersecret",
   },
 });
 

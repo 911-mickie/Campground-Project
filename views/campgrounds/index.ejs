@@ -12,10 +12,10 @@
     <div class="row">
       <div class="col-md-4">
         <% if(campground.images.length) {%>
-        <img src="<%= campground.images[0].url %> " class="img-fluid" alt="" />
+        <img src="<%= campground.images[`${Math.floor(Math.random()*5)}`].url %> " class="img-fluid" alt="" />
         <% } else {%>
         <img
-          src="https://res.cloudinary.com/mickie/image/upload/v1647930335/CampgroundProject/lucdzkofuy8prgpjs9qb.webp"
+          src="https://res.cloudinary.com/mickie/image/upload/v1647929913/CampgroundProject/d4prqfenuyimxwign24q.jpg"
         />
         <% } %>
       </div>
